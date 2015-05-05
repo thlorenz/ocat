@@ -1,0 +1,38 @@
+{
+  "name": "ocat",
+  "version": "0.0.0",
+  "description": "Inspect an object various ways in order to easily generate test cases.",
+  "main": "ocat.js",
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thlorenz/ocat.git"
+  },
+  "homepage": "https://github.com/thlorenz/ocat",
+  "dependencies": {
+    "xtend": "~4.0.0"
+  },
+  "devDependencies": {
+    "tape": "~4.0.0"
+  },
+  "keywords": [
+    "inspect",
+    "log",
+    "test",
+    "generate"
+  ],
+  "author": {
+    "name": "Thorsten Lorenz",
+    "email": "thlorenz@gmx.de",
+    "url": "http://thlorenz.com"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/thlorenz/ocat/blob/master/LICENSE"
+  },
+  "engine": {
+    "node": ">=0.8"
+  }
+}
