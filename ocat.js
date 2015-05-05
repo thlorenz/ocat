@@ -60,7 +60,7 @@ proto.bag = function bag(obj, opts) {
  * **Vim Example**:
  *
  * ```
- * :r !OCAT_COLOR=0 OCAT_RM=1 node % 1>2 /dev/null && cat /tmp/ocat.txt
+ * :r !OCAT_COLOR=0 OCAT_RM=1 node % 1&>2 /dev/null && cat /tmp/ocat.txt
  * ```
  *
  * will read the ocat printed output right into your editor.
@@ -108,7 +108,7 @@ proto.file = function file(obj, opts) {
  * @param {String=}  opts.indent     the indentation to apply to each line
  * @param {Boolean=} opts.color      if `true` logging in colors
  * @param {Number=}  opts.depth      depth to which the object is inspected
- * @param {Boolean=} opts.commaFirst if `true` commaFirst style is used (default: `true`)
+ * @param {Boolean=} opts.commaFirst if `true` commaFirst style is used when logging without color** (default: `true`)
  *
  */
 proto.log = function log(obj, opts) {
@@ -150,6 +150,7 @@ proto._registerExit = function _registerExit() {
     self._loggedOnExit = true;
   }
   // need beforeExit for tape which seems to mess with exit
+  // in that case we don't log at very end of output though
   process.once('beforeExit', logAll);
   process.once('exit', logAll);
 

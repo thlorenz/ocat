@@ -2,9 +2,7 @@
 
 Inspect an object various ways in order to easily generate test cases.
 
-```js
-// TODO
-```
+[![assets/demo.gif](assets/demo.gif)](https://raw.githubusercontent.com/thlorenz/ocat/master/assets/demo.gif)
 
 ## Installation
 
@@ -38,7 +36,7 @@ Allow overriding ocat options for <strong>all</strong> instances.</p>
 <li>
 <a href="https://github.com/thlorenz/ocat/blob/master/ocat.js">ocat.js</a>
 <span>, </span>
-<a href="https://github.com/thlorenz/ocat/blob/master/ocat.js#L161">lineno 161</a>
+<a href="https://github.com/thlorenz/ocat/blob/master/ocat.js#L162">lineno 162</a>
 </li>
 </ul></dd>
 </dl>
@@ -57,7 +55,7 @@ Set it to any other path you like to use instead.</p>
 <li>
 <a href="https://github.com/thlorenz/ocat/blob/master/ocat.js">ocat.js</a>
 <span>, </span>
-<a href="https://github.com/thlorenz/ocat/blob/master/ocat.js#L188">lineno 188</a>
+<a href="https://github.com/thlorenz/ocat/blob/master/ocat.js#L189">lineno 189</a>
 </li>
 </ul></dd>
 </dl>
@@ -141,7 +139,7 @@ This entire bag is logged at <code>process.on('exit')</code>.</p>
 <li>
 <a href="https://github.com/thlorenz/ocat/blob/master/ocat.js">ocat.js</a>
 <span>, </span>
-<a href="https://github.com/thlorenz/ocat/blob/master/ocat.js#L179">lineno 179</a>
+<a href="https://github.com/thlorenz/ocat/blob/master/ocat.js#L180">lineno 180</a>
 </li>
 </ul></dd>
 </dl>
@@ -168,7 +166,7 @@ on Unixes and who knows on Windows (<code>os.tmpdir()/ocat.txt</code>).</p>
 <p>This is useful if you want to read isolated ocat output into your editor
 without other output, i.e. by your test runner.</p>
 <p><strong>Vim Example</strong>:</p>
-<pre><code>:r !OCAT_COLOR=0 OCAT_RM=1 node % 1&gt;2 /dev/null &amp;&amp; cat /tmp/ocat.txt</code></pre>
+<pre><code>:r !OCAT_COLOR=0 OCAT_RM=1 node % 1&amp;&gt;2 /dev/null &amp;&amp; cat /tmp/ocat.txt</code></pre>
 <p>will read the ocat printed output right into your editor.
 You should probably bind that to a shortcut. ;)</p>
 <p><strong>Tail Example</strong>:</p>
@@ -321,7 +319,7 @@ You should probably bind that to a shortcut. ;)</p>
 <td class="attributes">
 &lt;optional><br>
 </td>
-<td class="description last"><p>if <code>true</code> commaFirst style is used (default: <code>true</code>)</p></td>
+<td class="description last"><p>if <code>true</code> commaFirst style is used when logging without color** (default: <code>true</code>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -353,7 +351,7 @@ You should probably bind that to a shortcut. ;)</p>
 <li>
 <a href="https://github.com/thlorenz/ocat/blob/master/ocat.js">ocat.js</a>
 <span>, </span>
-<a href="https://github.com/thlorenz/ocat/blob/master/ocat.js#L169">lineno 169</a>
+<a href="https://github.com/thlorenz/ocat/blob/master/ocat.js#L170">lineno 170</a>
 </li>
 </ul></dd>
 </dl>
@@ -372,7 +370,7 @@ If the an env var <code>OCAT_RM=1</code> is present, the file is removed on star
 <li>
 <a href="https://github.com/thlorenz/ocat/blob/master/ocat.js">ocat.js</a>
 <span>, </span>
-<a href="https://github.com/thlorenz/ocat/blob/master/ocat.js#L196">lineno 196</a>
+<a href="https://github.com/thlorenz/ocat/blob/master/ocat.js#L197">lineno 197</a>
 </li>
 </ul></dd>
 </dl>
