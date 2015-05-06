@@ -166,7 +166,7 @@ on Unixes and who knows on Windows (<code>os.tmpdir()/ocat.txt</code>).</p>
 <p>This is useful if you want to read isolated ocat output into your editor
 without other output, i.e. by your test runner.</p>
 <p><strong>Vim Example</strong>:</p>
-<pre><code>:r !OCAT_COLOR=0 OCAT_RM=1 node % 1&amp;&gt;2 /dev/null &amp;&amp; cat /tmp/ocat.txt</code></pre>
+<pre><code>:r !OCAT_COLOR=0 OCAT_DEPTH=0 OCAT_RM=1 node % 2&gt;&amp;1 &gt; /dev/null &amp;&amp; cat /tmp/ocat.txt</code></pre>
 <p>will read the ocat printed output right into your editor.
 You should probably bind that to a shortcut. ;)</p>
 <p><strong>Tail Example</strong>:</p>

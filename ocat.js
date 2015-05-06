@@ -18,7 +18,7 @@ var defaultOpts = {
   , suffix     : ''
   , indent     : ''
   , color      : typeof env.OCAT_COLOR !== 'undefined' ? env.OCAT_COLOR !== '0' : true
-  , depth      : 1
+  , depth      : typeof env.OCAT_DEPTH !== 'undefined' ? parseInt(env.OCAT_DEPTH) : 1
   , commaFirst : typeof env.OCAT_COMMAFIRST !== 'undefined' ? env.OCAT_COMMAFIRST === '1' : true
 }
 
@@ -60,7 +60,7 @@ proto.bag = function bag(obj, opts) {
  * **Vim Example**:
  *
  * ```
- * :r !OCAT_COLOR=0 OCAT_RM=1 node % 1&>2 /dev/null && cat /tmp/ocat.txt
+ * :r !OCAT_COLOR=0 OCAT_DEPTH=0 OCAT_RM=1 node % 2>&1 > /dev/null && cat /tmp/ocat.txt
  * ```
  *
  * will read the ocat printed output right into your editor.
