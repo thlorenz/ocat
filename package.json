@@ -1,6 +1,6 @@
 {
   "name": "ocat",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Inspect an object various ways in order to easily generate test cases.",
   "main": "ocat.js",
   "scripts": {
