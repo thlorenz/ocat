@@ -159,6 +159,21 @@ proto._registerExit = function _registerExit() {
 
 exports = module.exports = new Ocat();
 
+var RES5_OPTS = {
+  prefix: '  spok(t, res, \n',
+  suffix: ')',
+  indent: '   ',
+  depth: 5
+}
+
+/**
+ * Some preconfigured opts with prefix + indentation and depth
+ * that applies to lots of scenarios
+ *
+ * @name ocat::RES5_OPTS
+ */
+exports.RES5_OPTS = xtend(RES5_OPTS)
+
 /**
  * Start out as default options @see ocat::log.
  * Allow overriding ocat options for **all** instances.
