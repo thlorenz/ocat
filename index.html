@@ -1,0 +1,742 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>  | Documentation</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' type='text/css' rel='stylesheet' />
+  <link href='assets/style.css' type='text/css' rel='stylesheet' />
+  <link href='assets/github.css' type='text/css' rel='stylesheet' />
+</head>
+<body class='documentation'>
+  <div class='max-width-4 mx-auto'>
+    <div class='clearfix md-mxn2'>
+      <div class='fixed xs-hide fix-3 overflow-auto max-height-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'></h3>
+          <div class='mb1'><code></code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#ocatbag'
+                  class="">
+                  ocat.bag
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#ocatfile'
+                  class="">
+                  ocat.file
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#ocatlog'
+                  class="">
+                  ocat.log
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#ocatapplyres5opts'
+                  class="">
+                  ocat.applyRes5Opts
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#ocatopts'
+                  class="">
+                  ocat.opts
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#ocatresetopts'
+                  class="">
+                  ocat.resetOpts
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#ocatcreate'
+                  class="">
+                  ocat.create
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#ocattmpfile'
+                  class="">
+                  ocat.tmpFile
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#ocatrm'
+                  class="">
+                  ocat.rm
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='http://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div class='fix-margin-3'>
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='ocatbag'>
+      ocat.bag
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Inspects object and adds results to a bag.
+This entire bag is logged at <code>process.on('exit')</code>.</p>
+
+
+  <div class='pre p1 fill-light mt0'>ocat.bag(obj: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, opts: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>obj</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    to inspect
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>opts</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    options (same as @see ocat.log)
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='ocatfile'>
+      ocat.file
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Same as @see ocat.log, but writes to ocat.tmpFile * at <code>/tmp/ocat.txt</code>
+on Unixes and who knows on Windows (<code>os.tmpdir()/ocat.txt</code>).</p>
+<p>This is useful if you want to read isolated ocat output into your editor
+without other output, i.e. by your test runner.</p>
+<p><strong>Vim Example</strong>:</p>
+<pre><code>:r !OCAT_COLOR=0 OCAT_DEPTH=0 OCAT_RM=1 node % 2>&#x26;1 > /dev/null &#x26;&#x26; cat /tmp/ocat.txt
+</code></pre>
+<p>will read the ocat printed output right into your editor.
+You should probably bind that to a shortcut. ;)</p>
+<p><strong>Tail Example</strong>:</p>
+<p>In another terminal pane do:</p>
+<pre><code>tail -f /tmp/ocat.txt
+</code></pre>
+<p>to see logged objects every time you run your tests/code.</p>
+
+
+  <div class='pre p1 fill-light mt0'>ocat.file(obj: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, opts: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>obj</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    to inspect
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>opts</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    options (same as @see ocat.log) with 
+<code>color: false</code>
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='ocatlog'>
+      ocat.log
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Inspects object and logs it to <em>stderr</em> immediately.</p>
+<p>The given opts override all other options for each supplied property, which are derived as follows:</p>
+<ol>
+<li>ocat.opts, the default opts:
+<code>prefix: '', suffix: '', indent: '', color: true, depth: 1, commaFirst: true</code></li>
+<li><code>OCAT_COLOR</code> and <code>OCAT_COMMAFIRST</code> to override the related defaults, i.e.
+<code>OCAT_COLOR=0 node my.js</code> includes no colors</li>
+<li>opts passed to <code>ocat.create</code> for that <code>ocat</code> instance only</li>
+<li>opts passed to <code>ocat.log</code> and <code>ocat.bag</code></li>
+</ol>
+
+
+  <div class='pre p1 fill-light mt0'>ocat.log(obj: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, opts: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>obj</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    object to inspect
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>opts</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    options inherit from opts passed to 
+<code>create</code>
+ and then 
+<code>ocat.opts</code>
+.
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>opts.prefix</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>?</code>
+                  </td>
+                  <td class='break-word'><span>the prefix to insert before the logged object
+</span></td>
+                </tr>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>opts.suffix</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>?</code>
+                  </td>
+                  <td class='break-word'><span>the suffix to insert after the logged object
+</span></td>
+                </tr>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>opts.indent</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>?</code>
+                  </td>
+                  <td class='break-word'><span>the indentation to apply to each line
+</span></td>
+                </tr>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>opts.color</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?</code>
+                  </td>
+                  <td class='break-word'><span>if 
+<code>true</code>
+ logging in colors
+</span></td>
+                </tr>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>opts.depth</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>?</code>
+                  </td>
+                  <td class='break-word'><span>depth to which the object is inspected
+</span></td>
+                </tr>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>opts.commaFirst</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?</code>
+                  </td>
+                  <td class='break-word'><span>if 
+<code>true</code>
+ commaFirst style is used when logging without color** (default: 
+<code>true</code>
+)
+</span></td>
+                </tr>
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='ocatapplyres5opts'>
+      ocat.applyRes5Opts
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Applies preconfigured opts with prefix + indentation and depth
+that work well in lots of scenarios.</p>
+<h3>Example</h3>
+<pre class='hljs'><span class="hljs-keyword">const</span> ocat = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ocat'</span>).applyRes5Opts()</pre>
+
+
+  <div class='pre p1 fill-light mt0'>ocat.applyRes5Opts(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        ocat
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='ocatopts'>
+      ocat.opts
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Start out as default options @see ocat.log.
+Allow overriding ocat options for <strong>all</strong> instances.</p>
+
+
+  <div class='pre p1 fill-light mt0'>ocat.opts</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='ocatresetopts'>
+      ocat.resetOpts
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Resets ocat.opts to default opts.</p>
+
+
+  <div class='pre p1 fill-light mt0'>ocat.resetOpts()</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='ocatcreate'>
+      ocat.create
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Creates an ocat instance with the supplied options.</p>
+
+
+  <div class='pre p1 fill-light mt0'>ocat.create(opts: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>opts</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    options (same as @see ocat.log)
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        ocat instance
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='ocattmpfile'>
+      ocat.tmpFile
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>The file into which ocat.file writes.
+Set it to any other path you like to use instead.</p>
+
+
+  <div class='pre p1 fill-light mt0'>ocat.tmpFile</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='ocatrm'>
+      ocat.rm
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Removes the ocat.tmpFile
+If the an env var <code>OCAT_RM=1</code> is present, the file is removed on startup.</p>
+
+
+  <div class='pre p1 fill-light mt0'>ocat.rm()</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+      </div>
+    </div>
+  </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>
