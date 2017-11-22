@@ -170,11 +170,19 @@ var RES5_OPTS = {
  * Applies preconfigured opts with prefix + indentation and depth
  * that work well in lots of scenarios.
  *
+ * ### Example
+ *
+ * ```js
+ * const ocat = require('ocat').applyRes5Opts()
+ * ```
+ *
  * @name ocat.applyRes5Opts
  * @function
+ * @return {Object} ocat
  */
 exports.applyRes5Opts = function applyRes5Opts() {
   exports.opts = xtend(RES5_OPTS);
+  return exports
 }
 
 /**
