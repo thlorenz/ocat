@@ -167,13 +167,15 @@ var RES5_OPTS = {
 }
 
 /**
- * Some preconfigured opts with prefix + indentation and depth
- * that applies to lots of scenarios
- * @name ocat.RES5_OPTS
- * @constant {Object} ocat.RES5_OPTS
- * @default
+ * Applies preconfigured opts with prefix + indentation and depth
+ * that work well in lots of scenarios.
+ *
+ * @name ocat.applyRes5Opts
+ * @function
  */
-exports.RES5_OPTS = xtend(RES5_OPTS)
+exports.applyRes5Opts = function applyRes5Opts() {
+  exports.opts = xtend(RES5_OPTS);
+}
 
 /**
  * Start out as default options @see ocat.log.
