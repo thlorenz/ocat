@@ -79,6 +79,14 @@ The given opts override all other options for each supplied property, which are 
 Applies preconfigured opts with prefix + indentation and depth
 that work well in lots of scenarios.
 
+#### Example
+
+```js
+const ocat = require('ocat').applyRes5Opts()
+```
+
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** ocat
+
 ### ocat.opts
 
 Start out as default options @see ocat.log.
