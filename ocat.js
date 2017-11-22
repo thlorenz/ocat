@@ -40,10 +40,10 @@ var proto = Ocat.prototype;
  * Inspects object and adds results to a bag.
  * This entire bag is logged at `process.on('exit')`.
  *
- * @name ocat::bag
+ * @name ocat.bag
  * @function
  * @param {Object} obj to inspect
- * @param {Object} opts options (same as @see ocat::log)
+ * @param {Object} opts options (same as @see ocat.log)
  */
 proto.bag = function bag(obj, opts) {
   this._bagged.push(this._inspect(obj, opts))
@@ -77,10 +77,10 @@ proto.bag = function bag(obj, opts) {
  * to see logged objects every time you run your tests/code.
  *
  *
- * @name ocat::file
+ * @name ocat.file
  * @function
  * @param {Object} obj to inspect
- * @param {Object} opts options (same as @see ocat::log) with `color: false`
+ * @param {Object} opts options (same as @see ocat.log) with `color: false`
  */
 proto.file = function file(obj, opts) {
   var inspected = this._inspect(obj, opts)
@@ -99,7 +99,7 @@ proto.file = function file(obj, opts) {
  *  3. opts passed to `ocat.create` for that `ocat` instance only
  *  4. opts passed to `ocat.log` and `ocat.bag`
  *
- * @name ocat::log
+ * @name ocat.log
  * @function
  * @param {Object}   obj  object to inspect
  * @param {Object}   opts options inherit from opts passed to `create` and then `ocat.opts`.
@@ -169,23 +169,24 @@ var RES5_OPTS = {
 /**
  * Some preconfigured opts with prefix + indentation and depth
  * that applies to lots of scenarios
- *
- * @name ocat::RES5_OPTS
+ * @name ocat.RES5_OPTS
+ * @constant {Object} ocat.RES5_OPTS
+ * @default
  */
 exports.RES5_OPTS = xtend(RES5_OPTS)
 
 /**
- * Start out as default options @see ocat::log.
+ * Start out as default options @see ocat.log.
  * Allow overriding ocat options for **all** instances.
  *
- * @name ocat::opts
+ * @name ocat.opts
  */
 exports.opts = xtend(defaultOpts);
 
 /**
  * Resets ocat.opts to default opts.
  *
- * @name ocat::resetOpts
+ * @name ocat.resetOpts
  * @function
  */
 exports.resetOpts = function resetOpts() {
@@ -194,9 +195,9 @@ exports.resetOpts = function resetOpts() {
 
 /**
  * Creates an ocat instance with the supplied options.
- * @name ocat::create
+ * @name ocat.create
  * @function
- * @param {Object} opts options (same as @see ocat::log)
+ * @param {Object} opts options (same as @see ocat.log)
  * @return {Object} ocat instance
  */
 exports.create = Ocat;
@@ -205,7 +206,7 @@ exports.create = Ocat;
  * The file into which ocat.file writes.
  * Set it to any other path you like to use instead.
  *
- * @name ocat::tmpFile
+ * @name ocat.tmpFile
  */
 exports.tmpFile = tmpFile;
 
@@ -213,7 +214,7 @@ exports.tmpFile = tmpFile;
  * Removes the ocat.tmpFile
  * If the an env var `OCAT_RM=1` is present, the file is removed on startup.
  *
- * @name ocat::rm
+ * @name ocat.rm
  * @function
  */
 exports.rm = function rm() {
