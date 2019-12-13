@@ -36,7 +36,10 @@ test('\ndefault opts (no color)', function(t) {
       " , dos: 'zwei'",
       " , tres: { num: 'drei' }",
       " , hello: 'world'",
-      ' , array: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ] }',
+      ' , array: [',
+      '    0, 1, 2, 3, 4',
+      '  , 5, 6, 7, 8, 9',
+      '  ] }',
     ],
     'logs correct output'
   )
@@ -61,7 +64,10 @@ test('\nper method overrides', function(t) {
       "      dos: 'zwei',",
       "      tres: { num: 'drei' },",
       "      hello: 'world',",
-      '      array: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ] }',
+      '      array: [',
+      '        0, 1, 2, 3, 4,',
+      '        5, 6, 7, 8, 9',
+      '      ] }',
       '-suf',
     ],
     'logs correct output'
@@ -87,7 +93,10 @@ test('\nglobal settings', function(t) {
       "   , dos: 'zwei'",
       "   , tres: { num: 'drei' }",
       "   , hello: 'world'",
-      '   , array: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ] }',
+      '   , array: [',
+      '      0, 1, 2, 3, 4',
+      '    , 5, 6, 7, 8, 9',
+      '    ] }',
       '---suf',
     ],
     'logs correct output'
@@ -115,7 +124,10 @@ test('\nglobal settings and overrides', function(t) {
       "    dos: 'zwei',",
       "    tres: { num: 'drei' },",
       "    hello: 'world',",
-      '    array: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ] }',
+      '    array: [',
+      '      0, 1, 2, 3, 4,',
+      '      5, 6, 7, 8, 9',
+      '    ] }',
       '---suf',
     ],
     'logs correct output'
@@ -137,7 +149,10 @@ test('\nbag', function(t) {
       " , dos: 'zwei'",
       " , tres: { num: 'drei' }",
       " , hello: 'world'",
-      ' , array: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ] }',
+      ' , array: [',
+      '    0, 1, 2, 3, 4',
+      '  , 5, 6, 7, 8, 9',
+      '  ] }',
     ],
     'logs correct output'
   )

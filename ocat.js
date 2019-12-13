@@ -124,6 +124,8 @@ proto._inspect = function _inspect(obj, opts) {
   opts = xtend(defaultOpts, exports.opts, this._opts, opts)
 
   let inspected = inspect(obj, null, opts.depth, opts.color)
+  // We don't like extra newlines for object start and end
+  inspected = inspected.replace(/^ *{\n /, '{').replace(/\n}/, ' }')
 
   // when we're run in no color mode adjust style to comma first if so preferred
   inspected =
