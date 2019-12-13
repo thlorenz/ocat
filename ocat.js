@@ -1,7 +1,7 @@
 'use strict'
 
 const xtend = require('xtend')
-const inspect = require('util').inspect
+const utilInspect = require('util').inspect
 const fs = require('fs')
 const path = require('path')
 const os = require('os')
@@ -49,7 +49,7 @@ const proto = Ocat.prototype
  * @param {Object} opts options (same as @see ocat.log)
  */
 proto.bag = function bag(obj, opts) {
-  this._bagged.push(this._inspect(obj, opts))
+  this._bagged.push(this.inspect(obj, opts))
   this._registerExit()
 }
 
@@ -86,7 +86,7 @@ proto.bag = function bag(obj, opts) {
  * @param {Object} opts options (same as @see ocat.log) with `color: false`
  */
 proto.file = function file(obj, opts) {
-  const inspected = this._inspect(obj, opts)
+  const inspected = this.inspect(obj, opts)
   fs.appendFileSync(tmpFile, inspected + '\n\n')
 }
 
@@ -115,15 +115,15 @@ proto.file = function file(obj, opts) {
  *
  */
 proto.log = function log(obj, opts) {
-  console.error(this._inspect(obj, opts))
+  console.error(this.inspect(obj, opts))
 }
 
-proto._inspect = function _inspect(obj, opts) {
+proto.inspect = function _inspect(obj, opts) {
   // provide shortcut to trigger colors
   if (typeof opts === 'boolean') opts = { color: opts }
   opts = xtend(defaultOpts, exports.opts, this._opts, opts)
 
-  let inspected = inspect(obj, null, opts.depth, opts.color)
+  let inspected = utilInspect(obj, null, opts.depth, opts.color)
   // We don't like extra newlines for object start and end
   inspected = inspected.replace(/^ *{\n /, '{').replace(/\n}/, ' }')
 
