@@ -1,14 +1,14 @@
 'use strict'
 
-var test = require('tape')
-var ocat = require('../')
-var fs = require('fs')
+const test = require('tape')
+const ocat = require('../')
+const fs = require('fs')
 
 function inspect(obj, depth) {
   console.error(require('util').inspect(obj, false, depth || 5, true))
 }
 
-var obj = {
+const obj = {
   uno: 1,
   dos: 'zwei',
   tres: { num: 'drei' },
@@ -27,7 +27,7 @@ ocat.opts.color = false
 test('\ndefault opts (no color)', function(t) {
   ocat.rm()
   ocat.file(obj)
-  var logged = fs.readFileSync(ocat.tmpFile).toString()
+  const logged = fs.readFileSync(ocat.tmpFile).toString()
 
   t.deepEqual(
     nonEmptyLines(logged),
@@ -52,7 +52,7 @@ test('\nper method overrides', function(t) {
     commaFirst: false,
   })
 
-  var logged = fs.readFileSync(ocat.tmpFile).toString()
+  const logged = fs.readFileSync(ocat.tmpFile).toString()
   t.deepEqual(
     nonEmptyLines(logged),
     [
@@ -78,7 +78,7 @@ test('\nglobal settings', function(t) {
   ocat.rm()
   ocat.file(obj)
 
-  var logged = fs.readFileSync(ocat.tmpFile).toString()
+  const logged = fs.readFileSync(ocat.tmpFile).toString()
   t.deepEqual(
     nonEmptyLines(logged),
     [
@@ -106,7 +106,7 @@ test('\nglobal settings and overrides', function(t) {
     commaFirst: false,
   })
 
-  var logged = fs.readFileSync(ocat.tmpFile).toString()
+  const logged = fs.readFileSync(ocat.tmpFile).toString()
   t.deepEqual(
     nonEmptyLines(logged),
     [
@@ -128,7 +128,7 @@ test('\nbag', function(t) {
   ocat.opts.color = false
 
   ocat.bag(obj)
-  var logged = ocat._bagged[0]
+  const logged = ocat._bagged[0]
 
   t.deepEqual(
     nonEmptyLines(logged),

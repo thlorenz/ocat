@@ -1,19 +1,19 @@
 'use strict'
 
-var xtend = require('xtend')
-var inspect = require('util').inspect
-var fs = require('fs')
-var path = require('path')
-var os = require('os')
+const xtend = require('xtend')
+const inspect = require('util').inspect
+const fs = require('fs')
+const path = require('path')
+const os = require('os')
 
-var isOperatingSystem = !/^win/.test(process.platform)
-var tmpFile = isOperatingSystem
+const isOperatingSystem = !/^win/.test(process.platform)
+const tmpFile = isOperatingSystem
   ? path.join('/tmp', 'ocat.txt')
   : path.join(os.tmpdir(), 'ocat.txt')
 
-var env = process.env
+const env = process.env
 
-var defaultOpts = {
+const defaultOpts = {
   prefix: '',
   suffix: '',
   indent: '',
@@ -37,7 +37,7 @@ function Ocat(opts) {
   this._opts = opts
 }
 
-var proto = Ocat.prototype
+const proto = Ocat.prototype
 
 /**
  * Inspects object and adds results to a bag.
@@ -86,7 +86,7 @@ proto.bag = function bag(obj, opts) {
  * @param {Object} opts options (same as @see ocat.log) with `color: false`
  */
 proto.file = function file(obj, opts) {
-  var inspected = this._inspect(obj, opts)
+  const inspected = this._inspect(obj, opts)
   fs.appendFileSync(tmpFile, inspected + '\n\n')
 }
 
@@ -123,7 +123,7 @@ proto._inspect = function _inspect(obj, opts) {
   if (typeof opts === 'boolean') opts = { color: opts }
   opts = xtend(defaultOpts, exports.opts, this._opts, opts)
 
-  var inspected = inspect(obj, null, opts.depth, opts.color)
+  let inspected = inspect(obj, null, opts.depth, opts.color)
 
   // when we're run in no color mode adjust style to comma first if so preferred
   inspected =
@@ -150,7 +150,7 @@ proto._registerExit = function _registerExit() {
   // only need to register this once of course
   if (this._registered) return
 
-  var self = this
+  const self = this
   function logAll() {
     if (self._loggedOnExit) return
     self._bagged.forEach(logstderr)
@@ -166,7 +166,7 @@ proto._registerExit = function _registerExit() {
 
 exports = module.exports = new Ocat()
 
-var RES5_OPTS = {
+const RES5_OPTS = {
   prefix: '  spok(t, res, \n',
   suffix: ')',
   indent: '   ',
@@ -229,7 +229,7 @@ exports.tmpFile = tmpFile
 
 /**
  * Removes the ocat.tmpFile
- * If the an env var `OCAT_RM=1` is present, the file is removed on startup.
+ * If the an env const `OCAT_RM=1` is present, the file is removed on startup.
  *
  * @name ocat.rm
  * @function
