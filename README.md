@@ -1,4 +1,4 @@
-# ocat [![build status](https://secure.travis-ci.org/thlorenz/ocat.png)](http://travis-ci.org/thlorenz/ocat)
+# ocat [![](https://github.com/thlorenz/ocat/workflows/Node%20CI/badge.svg?branch=master)](https://github.com/thlorenz/ocat/actions)
 
 Inspect an object various ways in order to easily generate test cases.
 
