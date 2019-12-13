@@ -1,40 +1,43 @@
-'use strict';
+'use strict'
 
-var xtend = require('xtend');
-var inspect = require('util').inspect;
+var xtend = require('xtend')
+var inspect = require('util').inspect
 var fs = require('fs')
 var path = require('path')
 var os = require('os')
 
-var isOperatingSystem = !(/^win/).test(process.platform);
+var isOperatingSystem = !/^win/.test(process.platform)
 var tmpFile = isOperatingSystem
   ? path.join('/tmp', 'ocat.txt')
-  : path.join(os.tmpdir(), 'ocat.txt');
+  : path.join(os.tmpdir(), 'ocat.txt')
 
-var env = process.env;
+var env = process.env
 
 var defaultOpts = {
-    prefix     : ''
-  , suffix     : ''
-  , indent     : ''
-  , color      : typeof env.OCAT_COLOR !== 'undefined' ? env.OCAT_COLOR !== '0' : true
-  , depth      : typeof env.OCAT_DEPTH !== 'undefined' ? parseInt(env.OCAT_DEPTH) : 1
-  , commaFirst : typeof env.OCAT_COMMAFIRST !== 'undefined' ? env.OCAT_COMMAFIRST === '1' : true
+  prefix: '',
+  suffix: '',
+  indent: '',
+  color: typeof env.OCAT_COLOR !== 'undefined' ? env.OCAT_COLOR !== '0' : true,
+  depth: typeof env.OCAT_DEPTH !== 'undefined' ? parseInt(env.OCAT_DEPTH) : 1,
+  commaFirst:
+    typeof env.OCAT_COMMAFIRST !== 'undefined'
+      ? env.OCAT_COMMAFIRST === '1'
+      : true,
 }
 
 function logstderr(item) {
-  console.error(item);
+  console.error(item)
 }
 
 function Ocat(opts) {
-  if (!(this instanceof Ocat)) return new Ocat(opts);
-  this._registered = false;
-  this._bagged = [];
+  if (!(this instanceof Ocat)) return new Ocat(opts)
+  this._registered = false
+  this._bagged = []
 
-  this._opts = opts;
+  this._opts = opts
 }
 
-var proto = Ocat.prototype;
+var proto = Ocat.prototype
 
 /**
  * Inspects object and adds results to a bag.
@@ -84,7 +87,7 @@ proto.bag = function bag(obj, opts) {
  */
 proto.file = function file(obj, opts) {
   var inspected = this._inspect(obj, opts)
-  fs.appendFileSync(tmpFile, inspected + '\n\n');
+  fs.appendFileSync(tmpFile, inspected + '\n\n')
 }
 
 /**
@@ -117,53 +120,57 @@ proto.log = function log(obj, opts) {
 
 proto._inspect = function _inspect(obj, opts) {
   // provide shortcut to trigger colors
-  if (typeof opts === 'boolean') opts = { color: opts };
-  opts = xtend(defaultOpts, exports.opts, this._opts, opts);
+  if (typeof opts === 'boolean') opts = { color: opts }
+  opts = xtend(defaultOpts, exports.opts, this._opts, opts)
 
-  var inspected = inspect(obj, null, opts.depth, opts.color);
+  var inspected = inspect(obj, null, opts.depth, opts.color)
 
   // when we're run in no color mode adjust style to comma first if so preferred
-  inspected = !opts.color && opts.commaFirst
-    ? ' ' + inspected.replace(/,\n(:? +?) {1,2}(:?[^ ])/gm, '\n$1, $2')
-    : inspected
+  inspected =
+    !opts.color && opts.commaFirst
+      ? ' ' + inspected.replace(/,\n(:? +?) {1,2}(:?[^ ])/gm, '\n$1, $2')
+      : inspected
 
   function addIndent(x) {
     return opts.indent + x
   }
 
   if (opts.indent && opts.indent.length) {
-    inspected = inspected.split('\n').map(addIndent).join('\n');
+    inspected = inspected
+      .split('\n')
+      .map(addIndent)
+      .join('\n')
   }
 
-  return opts.prefix + inspected + opts.suffix;
+  return opts.prefix + inspected + opts.suffix
 }
 
 proto._registerExit = function _registerExit() {
   // make sure we log the bagged ocats on process exit
   // only need to register this once of course
-  if (this._registered) return;
+  if (this._registered) return
 
-  var self = this;
+  var self = this
   function logAll() {
-    if (self._loggedOnExit) return;
+    if (self._loggedOnExit) return
     self._bagged.forEach(logstderr)
-    self._loggedOnExit = true;
+    self._loggedOnExit = true
   }
   // need beforeExit for tape which seems to mess with exit
   // in that case we don't log at very end of output though
-  process.once('beforeExit', logAll);
-  process.once('exit', logAll);
+  process.once('beforeExit', logAll)
+  process.once('exit', logAll)
 
-  this._registered = true;
+  this._registered = true
 }
 
-exports = module.exports = new Ocat();
+exports = module.exports = new Ocat()
 
 var RES5_OPTS = {
   prefix: '  spok(t, res, \n',
   suffix: ')',
   indent: '   ',
-  depth: 5
+  depth: 5,
 }
 
 /**
@@ -181,7 +188,7 @@ var RES5_OPTS = {
  * @return {Object} ocat
  */
 exports.applyRes5Opts = function applyRes5Opts() {
-  exports.opts = xtend(RES5_OPTS);
+  exports.opts = xtend(RES5_OPTS)
   return exports
 }
 
@@ -191,7 +198,7 @@ exports.applyRes5Opts = function applyRes5Opts() {
  *
  * @name ocat.opts
  */
-exports.opts = xtend(defaultOpts);
+exports.opts = xtend(defaultOpts)
 
 /**
  * Resets ocat.opts to default opts.
@@ -200,7 +207,7 @@ exports.opts = xtend(defaultOpts);
  * @function
  */
 exports.resetOpts = function resetOpts() {
-  exports.opts = xtend(defaultOpts);
+  exports.opts = xtend(defaultOpts)
 }
 
 /**
@@ -210,7 +217,7 @@ exports.resetOpts = function resetOpts() {
  * @param {Object} opts options (same as @see ocat.log)
  * @return {Object} ocat instance
  */
-exports.create = Ocat;
+exports.create = Ocat
 
 /**
  * The file into which ocat.file writes.
@@ -218,7 +225,7 @@ exports.create = Ocat;
  *
  * @name ocat.tmpFile
  */
-exports.tmpFile = tmpFile;
+exports.tmpFile = tmpFile
 
 /**
  * Removes the ocat.tmpFile
@@ -230,7 +237,9 @@ exports.tmpFile = tmpFile;
 exports.rm = function rm() {
   try {
     fs.unlinkSync(exports.tmpFile)
-  } catch(_) { /* don't care */ }
+  } catch (_) {
+    /* don't care */
+  }
 }
 
-if (env.OCAT_RM === '1') exports.rm();
+if (env.OCAT_RM === '1') exports.rm()

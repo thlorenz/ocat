@@ -4,7 +4,9 @@
   "description": "Inspect an object various ways in order to easily generate test cases.",
   "main": "ocat.js",
   "scripts": {
-    "test": "tape test/*.js"
+    "test": "tape test/*.js",
+    "lint": "prettier -c test/*.js examples/*.js *.js",
+    "lint:fix": "prettier --write test/*.js examples/*.js *.js"
   },
   "repository": {
     "type": "git",
@@ -15,6 +17,7 @@
     "xtend": "~4.0.0"
   },
   "devDependencies": {
+    "prettier": "^1.19.1",
     "tape": "~4.0.0"
   },
   "keywords": [
@@ -33,6 +36,6 @@
     "url": "https://github.com/thlorenz/ocat/blob/master/LICENSE"
   },
   "engine": {
-    "node": ">=0.8"
+    "node": ">=8"
   }
 }
